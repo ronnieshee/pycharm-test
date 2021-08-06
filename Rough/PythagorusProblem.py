@@ -10,26 +10,20 @@ def remove_dup(list_b):
     return list_b
 
 def pythagoras_triplets():
-    list_of_nos_sq, final_list = [],[]
-    list_of_nos = list(range(1, 100))
-
-    for i in list_of_nos:
-        list_of_nos_sq.append(i**2)
-
-    for item in list_of_nos:
-        for i in list_of_nos:
+    final_list = []
+    for item in range(1, 100):
+        for i in range(item, 100):
             #print(item, i)
-            if item**2 + i**2 in list_of_nos_sq:
-                temp_list = []
-                temp_list.append(item)
-                temp_list.append(i)
-                temp_list.append((item**2 + i**2)**(1/2))
-                temp_list.sort()
+            expr = item**2 + i**2
+            sqrexpr = expr ** .5
+            if int(sqrexpr) == sqrexpr:
+                temp_list = [item, i,int(sqrexpr)]
                 final_list.append(temp_list)
-    #print(final_list)
     final_list = remove_dup(final_list)
     return final_list
 
 
-print(pythagoras_triplets())
+triples = pythagoras_triplets()
+for item in triples:
+    print(item)
 
